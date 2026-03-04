@@ -1,9 +1,9 @@
 name: Refresh Dashboard Screenshot
 
 on:
-  schedule:
-    - cron: '*/10 * * * *'
-  workflow_dispatch:  # This is the manual override button
+  workflow_dispatch:
+  repository_dispatch:
+    types: [force_refresh] # Matches the event_type in Step 2
 
 jobs:
   screenshot:
