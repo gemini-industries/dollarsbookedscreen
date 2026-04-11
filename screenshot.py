@@ -13,7 +13,8 @@ async def run():
         target_url = "https://dollarsbooked-ja4j8cf2scjgkkckuglpsz.streamlit.app/?embed=true"
         
         print(f"Navigating to {target_url}...")
-        await page.goto(target_url, wait_until="networkidle")
+       await page.goto(target_url, wait_until="domcontentloaded", timeout=90000)
+       await page.wait_for_timeout(10000)
         
         # IMPORTANT: Streamlit takes time to fetch data from your .ttx file.
         # We wait 10 seconds to ensure the charts/tables are fully rendered.
